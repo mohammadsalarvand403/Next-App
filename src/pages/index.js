@@ -1,4 +1,6 @@
-import {ChevronDownIcon,AdjustmentsHorizontalIcon} from "@heroicons/react/24/outline"
+import {ChevronDownIcon,AdjustmentsHorizontalIcon,HeartIcon,BookmarkIcon,ClockIcon,ChatBubbleBottomCenterTextIcon
+
+} from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -48,11 +50,43 @@ export default function Home() {
       <div className=" md:col-span-9  grid grid-cols-6 gap-8" >
         {["Angular.js.jpg","Next.js.png","Node.js.jpg","Nuxt.js.jpg","Vue.js.png","tailwindui.jpg"].map((item,index)=>{
           return(
-            <div key={index} className="col-span-6 md:col-span-3 lg:col-span-2 bg-white rounded-3xl p-2 ">
+            <div key={index} className="col-span-6 md:col-span-3 lg:col-span-2 bg-white flex flex-col rounded-3xl p-2 ">
               <div className="spect-w-16 aspect-h-9">
                 <img src={`/images/${item}`}  className="rounded-2xl  w-full h-full object-center object-cover"/>
               </div>
-              <div></div>
+              <div className="bg-gray-50 p-2 rounded-2xl flex flex-col w-full justify-between flex-1">
+                <h2 className="mb-4 font-bold">بررسی کامل ریکت و ریداکس</h2>
+                <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                <img src="/images/Next.js.png" className="w-8 h-8 rounded-full ring-2 ring-white ml-2"/>
+                <span className="text-sm">محمد سالاروند</span>
+                </div>
+                <span className="text-xs px-2 rounded-xl bg-blue-100 text-blue-600
+                hover:text-blue-100 hover:bg-blue-600 transition-all duration-300
+                ">
+                  ری اکت
+                </span>
+                </div>
+                <div className="flex items-center justify-between py-1">
+               <div className="flex gap-1">
+               <div className="flex items-center  bg-slate-200 rounded-md p-1">
+               <ChatBubbleBottomCenterTextIcon  className="w-4 h-4 rounded-md  stroke-slate-600"/>
+               <span className="text-xs mr-1">10</span>
+               </div>
+               <div className="flex items-center  bg-red-200 stroke-slate-50 rounded-md p-1 ">
+               <HeartIcon className="w-4 h-4 rounded-xl  stroke-red-500"/>
+                <span className="text-xs mr-1">5</span>
+               </div>
+               <div className=" bg-blue-200  rounded-md p-1">
+               <BookmarkIcon className="w-4 h-4 rounded-xl stroke-blue-500" />
+               </div>
+               </div>
+               <div className="flex items-center">
+               <ClockIcon className="w-4 h-4 rounded-xl stroke-slate-500"/>
+               <span className="text-xs text-center">12دقیقه</span>
+               </div>
+                </div>
+              </div>
             </div>
           )
         })}
