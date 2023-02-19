@@ -7,9 +7,9 @@ export default function Home() {
   const [isOpen,setIsOpen]=useState(false)
   return (
     
-      <div className="bg-gray-50">
-        <div className="container mx-auto lg:max-w-screen-lg">
-    <div dir="rtl" className="grid gap-4 md:grid-cols-12 md:grid-rows-[70px_minmax(300px,_1fr)] min-h-screen">
+      <div dir="rtl" className="bg-gray-50">
+    <div className="container mx-auto lg:max-w-screen-lg">
+    <div  className="grid gap-8 md:grid-cols-12 md:grid-rows-[70px_minmax(300px,_1fr)] min-h-screen">
      <div className="hidden md:block md:row-span-2 md:col-span-3">
       <div className="bg-white rounded-3xl overflow-hidden">
     <div className="flex items-center justify-between py-4 px-4 bg-purple-400"
@@ -45,8 +45,18 @@ export default function Home() {
       </ul>
      </div>
       </div>  
-      <div className="">
-        </div> 
+      <div className=" md:col-span-9  grid grid-cols-6 gap-8" >
+        {["Angular.js.jpg","Next.js.png","Node.js.jpg","Nuxt.js.jpg","Vue.js.png","tailwindui.jpg"].map((item,index)=>{
+          return(
+            <div key={index} className="col-span-6 md:col-span-3 lg:col-span-2 bg-white rounded-3xl p-2 ">
+              <div className="spect-w-16 aspect-h-9">
+                <img src={`/images/${item}`}  className="rounded-2xl  w-full h-full object-center object-cover"/>
+              </div>
+              <div></div>
+            </div>
+          )
+        })}
+    </div> 
   </div>
       </div>
       </div>
