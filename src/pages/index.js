@@ -11,8 +11,9 @@ export default function Home({blogsData,postCategoris}) {
   return (
     
       <div dir="rtl" className="bg-gray-50">
-    <div className="container mx-auto lg:max-w-screen-lg">
+    <div className="container mx-auto lg:max-w-screen-xl px-4 md:px-0">
     <div  className="grid gap-8 md:grid-cols-12 md:grid-rows-[70px_minmax(300px,_1fr)] min-h-screen">
+        {/* {Category /Desktop} */}
      <div className="hidden md:block md:row-span-2 md:col-span-3">
       <div className="bg-white rounded-3xl overflow-hidden">
     <div className="flex items-center justify-between py-4 px-4 bg-purple-400"
@@ -36,6 +37,17 @@ export default function Home({blogsData,postCategoris}) {
         </div>
         </div>
         </div>
+        {/* {Category/Mobile} */}
+      <div className=" flex md:hidden gap-x-4 overflow-auto pt-5 pb-5">
+      {postCategoris.map((category=>{
+        return(
+          <Link key={category.id} href={`/blogs/${category.englishTitle}`}>
+      <p className="block text-sm whitespace-nowrap px-3 py-1 border border-gray-500 text-center bg-white rounded-3xl text-gray-500" > {category.title}</p>
+      </Link>
+        )
+      }))}
+      </div>
+         {/* {sortbar/Desktop}  */}
         <div className="hidden md:block md:col-span-9 " >
      <div className="bg-white rounded-3xl px-4 flex items-center">
       <div className="flex gap-x-2 items-center ml-4">
@@ -48,7 +60,8 @@ export default function Home({blogsData,postCategoris}) {
         <li className="text-gray-700 cursor-pointer py-4">جدید ترین ها</li>
       </ul>
      </div>
-      </div>  
+      </div> 
+     {/* {blogs/section} */}
       <div className=" md:col-span-9  grid grid-cols-6 gap-8" >
     <PostList blogsData={blogsData}/>
     </div>

@@ -48,6 +48,7 @@ const PostList = ({blogsData}) => {
                </div>
                <div className="flex items-center text-[10px] text-gray-400 font-bold">
                <ClockIcon className="w-4 h-4 rounded-xl stroke-gray-400 ml-1"/>
+               <span className="ml-1">زمان مطالعه:</span>
                <span className="ml-1 leading-3">{blog.readingTime}</span>
                <span>دقیقه</span>
                </div>
