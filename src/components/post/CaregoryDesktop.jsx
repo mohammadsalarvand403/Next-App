@@ -2,7 +2,7 @@ import {ChevronDownIcon} from "@heroicons/react/24/outline"
 import Link from "next/link";
 import { useState } from "react";
 const CategoryDeskTop = ({postCategoris}) => {
-    const [isOpen,setIsOpen]=useState(false)
+    const [isOpen,setIsOpen]=useState(true)
     return ( 
         <div className="bg-white rounded-3xl overflow-hidden">
         <div className="flex items-center justify-between py-4 px-4 bg-purple-400"

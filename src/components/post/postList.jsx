@@ -1,13 +1,14 @@
 import {HeartIcon,BookmarkIcon,ClockIcon,ChatBubbleBottomCenterTextIcon
 
 } from "@heroicons/react/24/outline"
+import Link from "next/link";
 const PostList = ({blogsData}) => {
   
     return (  
         blogsData.docs.map((blog,index)=>{
           return(
             <div key={blog.id} className="col-span-6 md:col-span-3 lg:col-span-2 bg-white 
-            flex flex-col rounded-3xl p-2 ">
+            flex flex-col rounded-3xl p-2 max-h-[330px]">
               <div className="spect-w-16 aspect-h-9 mb-6">
                 {/* {blog/image} */}
                 <img src={blog.coverImage} 
@@ -17,6 +18,7 @@ const PostList = ({blogsData}) => {
               <div className="bg-gray-50 p-2 rounded-2xl flex flex-col w-full 
               justify-between flex-1">
                 <h2 className="mb-4 font-bold">{blog.title}</h2>
+                </div>
                 {/* {blog /data} */}
                 <div className="flex items-center justify-between mb-4">
                   {/* {blog/author-category} */}
@@ -25,11 +27,13 @@ const PostList = ({blogsData}) => {
                  className="w-6 h-6 rounded-full ring-2 ring-white ml-2"/>
                 <span className="text-sm font-bold text-gray-500">محمد سالاروند</span>
                 </div>
+                <Link href={`/blogs/${blog.category.englishTitle}`}>
                 <span className="text-xs px-2 py-1 rounded-xl bg-blue-100 text-blue-600
                 hover:text-blue-100 hover:bg-blue-600 transition-all duration-300
                 ">
-                  {blog.category.englishTitle}
+                  {blog.category.title}
                 </span>
+                </Link>
                 </div>
                 {/* {blog /interaction} */}
                 <div className="flex items-center justify-between">
@@ -53,7 +57,6 @@ const PostList = ({blogsData}) => {
                <span>دقیقه</span>
                </div>
                 </div>
-              </div>
             </div>
           )
         })

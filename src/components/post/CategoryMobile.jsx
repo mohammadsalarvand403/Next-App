@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const CategoryMobile = ({postCategoris}) => {
     return ( 
-    <div>
+    <div className=" flex md:hidden gap-x-4 overflow-auto pt-5 pb-5">
       {postCategoris.map((category=>{
         return(
           <Link key={category.id} href={`/blogs/${category.englishTitle}`}>
