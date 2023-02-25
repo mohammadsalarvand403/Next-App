@@ -6,7 +6,7 @@ const PostList = ({blogsData}) => {
     return (  
         blogsData.docs.map((blog,index)=>{
           return(
-            <div key={index} className="col-span-6 md:col-span-3 lg:col-span-2 bg-white 
+            <div key={blog.id} className="col-span-6 md:col-span-3 lg:col-span-2 bg-white 
             flex flex-col rounded-3xl p-2 ">
               <div className="spect-w-16 aspect-h-9 mb-6">
                 {/* {blog/image} */}
