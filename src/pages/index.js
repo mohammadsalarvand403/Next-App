@@ -3,7 +3,7 @@ import Link from "next/link";
 const HomePage = () => {
     return ( 
         <div>
-            <Link href={"/bloges"}>
+            <Link href={"/blogs"}>
                 <p className="flex justify-center items-center font-bold">
                 go to blogs page
                 </p>
