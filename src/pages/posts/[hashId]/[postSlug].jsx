@@ -124,8 +124,8 @@ const PostPAge = ({post}) => {
                     <PostIntraction post={post} className="justify-evenly w-full md:w-auto" />
                     <div className="flex items-center md:gap-x-4 gap-x-3 w-full md:w-auto
                     justify-evenly">
-                        <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://fronthooks.ir/
-                        posts/${post.slug}`}
+                        <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${process.env.NEXT_PUBLIC_DOMAIN_URL}/
+                        posts/${post.hashId}/${post.slug}`}
                         target="_blank"
                         className="block"
                         rel="noreferrer"
@@ -134,8 +134,8 @@ const PostPAge = ({post}) => {
                         className="fill-gray-400 hover:fill-gray-500 transition-all duration-300 cursor-pointer"
                         />
                         </a>
-                        <a href={`https://twitter.com/shareArticle?mini=true&url=https://fronthooks.ir/
-                        posts/${post.slug}`}
+                        <a href={`https://twitter.com/share?text=${post.title}&url=${process.env.NEXT_PUBLIC_DOMAIN_URL}/
+                       posts/${post.hashId}/${post.slug}`}
                         target="_blank"
                         className="block"
                         rel="noreferrer"
@@ -144,8 +144,8 @@ const PostPAge = ({post}) => {
                         className="fill-gray-400 hover:fill-gray-500 transition-all duration-300 cursor-pointer"
                         />
                         </a>
-                        <a href={`https://telegram.org/shareArticle?mini=true&url=https://fronthooks.ir/
-                        posts/${post.slug}`}
+                        <a href={`https://telegram.me/share/url?url=${process.env.NEXT_PUBLIC_DOMAIN_URL}
+                        posts/${post.hashId}/${post.slug}&text=${post.title}`}
                         target="_blank"
                         className="block"
                         rel="noreferrer"
