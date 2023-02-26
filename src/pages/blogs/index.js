@@ -6,7 +6,6 @@ import axios from "axios"
 import { useState } from "react"
 
 export default function Home({blogsData,postCategoris}) {
-  const [isOpen,setIsOpen]=useState(false)
   return (
     
       <div dir="rtl" className="bg-gray-50">

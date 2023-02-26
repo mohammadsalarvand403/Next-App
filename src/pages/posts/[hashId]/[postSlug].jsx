@@ -1,12 +1,15 @@
+import PostIntraction from "@/components/postIntration";
 import { toPersianDigits } from "@/utils/toPersianDigits";
 import { BookmarkIcon, LinkIcon,SolideBookmarkIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import Link from "next/link";
+import { IoLogoLinkedin,IoLogoTwitter } from 'react-icons/io';
+import { FaTelegram} from 'react-icons/fa';
 
 const PostPAge = ({post}) => {
     return (
         <div dir="rtl" className="bg-gray-50 h-screen p-2">
-            <div className="md:max-w-screen-lg  container mx-auto">
+            <div className="md:max-w-screen-md  container mx-auto">
             <header className="flex flex-col md:flex-row gap-y-5 md:justify-between md:items-start
             mb-12  mx-auto">
                 {/* {author data} */}
@@ -103,7 +106,57 @@ const PostPAge = ({post}) => {
  }`
  }
              </pre>
+            
             </main>
+            <section className="py-4">
+                <ul className="flex it flex-wrap gap-x-4 mb-6">
+                    {["فرانت اند","جاوااسکریپت","ریکت","next.js"].map((tag,index)=>{
+                        return(
+                            <li key={index} className="px-3 py-1 rounded-2xl bg-gray-200 hover:bg-gray-100
+                            transition-all cursor-pointer text-gray-600 text-xs mb-3 block">
+                                {tag}
+
+                            </li>
+                        )
+                    })}
+                </ul>
+                <div className="flex items-center flex-col gap-y-8 md:flex-row md:justify-between ">
+                    <PostIntraction post={post} className="justify-evenly w-full md:w-auto" />
+                    <div className="flex items-center md:gap-x-4 gap-x-3 w-full md:w-auto
+                    justify-evenly">
+                        <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://fronthooks.ir/
+                        posts/${post.slug}`}
+                        target="_blank"
+                        className="block"
+                        rel="noreferrer"
+                        >  
+                        <IoLogoLinkedin size={30}
+                        className="fill-gray-400 hover:fill-gray-500 transition-all duration-300 cursor-pointer"
+                        />
+                        </a>
+                        <a href={`https://twitter.com/shareArticle?mini=true&url=https://fronthooks.ir/
+                        posts/${post.slug}`}
+                        target="_blank"
+                        className="block"
+                        rel="noreferrer"
+                        >  
+                        <IoLogoTwitter size={30}
+                        className="fill-gray-400 hover:fill-gray-500 transition-all duration-300 cursor-pointer"
+                        />
+                        </a>
+                        <a href={`https://telegram.org/shareArticle?mini=true&url=https://fronthooks.ir/
+                        posts/${post.slug}`}
+                        target="_blank"
+                        className="block"
+                        rel="noreferrer"
+                        >  
+                        <FaTelegram size={30}
+                        className="fill-gray-400 hover:fill-gray-500 transition-all duration-300 cursor-pointer"
+                        />
+                        </a>
+                    </div>
+                </div>
+             </section>
             </div>
         </div>
       );
@@ -114,8 +167,6 @@ export default PostPAge;
 export async function getServerSideProps(ctx){
     const {query}=ctx;
     const {data:{data}}=await axios.get(`http://localhost:5000/api/posts/${query.postSlug}`)
-    console.log(data);
-    console.log(query);
     return{
         props:{
             post:data

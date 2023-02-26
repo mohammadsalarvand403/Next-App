@@ -2,6 +2,7 @@ import {HeartIcon,BookmarkIcon,ClockIcon,ChatBubbleBottomCenterTextIcon
 
 } from "@heroicons/react/24/outline"
 import Link from "next/link";
+import PostIntraction from "../postIntration";
 const PostList = ({blogsData}) => {
   
   
@@ -42,19 +43,7 @@ const PostList = ({blogsData}) => {
                 </div>
                 {/* {blog /interaction} */}
                 <div className="flex items-center justify-between">
-               <div className="flex items-center gap-x-2">
-               <button className="bg-gray-200 p-0.5 rounded flex items-center gap-x-1">
-               <ChatBubbleBottomCenterTextIcon  className="w-4 h-4 rounded-md  stroke-slate-500"/>
-               <span className="text-xs text-gray-500 font-bold leading-3">{blog.commentsCount}</span>
-               </button>
-               <button className="bg-red-100  p-0.5 rounded flex items-center gap-x-1">
-               <HeartIcon className="w-4 h-4 rounded-xl  stroke-red-500"/>
-                <span className="text-xs text-gray-500 font-bold leading-3">{blog.likesCount}</span>
-               </button>
-               <button className="bg-blue-200  p-0.5 rounded flex items-center gap-x-1">
-               <BookmarkIcon className="w-4 h-4 rounded-xl stroke-blue-500" />
-               </button>
-               </div>
+                  <PostIntraction post={blog} isSmall/>
                <div className="flex items-center text-[10px] text-gray-400 font-bold">
                <ClockIcon className="w-4 h-4 rounded-xl stroke-gray-400 ml-1"/>
                <span className="ml-1">زمان مطالعه:</span>
