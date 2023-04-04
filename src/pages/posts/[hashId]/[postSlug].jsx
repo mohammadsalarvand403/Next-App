@@ -3,10 +3,23 @@ import { toPersianDigits } from "@/utils/toPersianDigits";
 import { BookmarkIcon, LinkIcon,SolideBookmarkIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import Link from "next/link";
-import { IoLogoLinkedin,IoLogoTwitter } from 'react-icons/io';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { IoLogoLinkedin,IoLogoTwitter} from 'react-icons/io';
 import { FaTelegram} from 'react-icons/fa';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { useState } from "react";
+import {MdContentCopy} from 'react-icons/md';
 
 const PostPAge = ({post}) => {
+    const [copeid,setCopeid]=useState(false)
+    const copideHandler =()=>{
+        setCopeid(true)
+        toast.success("کپی شد");
+        setTimeout(()=>{
+          setCopeid(false)  
+        },3000)
+    }
     return (
         <div dir="rtl" className="bg-gray-50 h-screen p-2">
             <div className="md:max-w-screen-md  container mx-auto">
@@ -122,8 +135,9 @@ const PostPAge = ({post}) => {
                 </ul>
                 <div className="flex items-center flex-col gap-y-8 md:flex-row md:justify-between ">
                     <PostIntraction post={post} className="justify-evenly w-full md:w-auto" />
-                    <div className="flex items-center md:gap-x-4 gap-x-3 w-full md:w-auto
-                    justify-evenly">
+                    <div className="flex gap-x-6 items-center justify-between w-full md:w-auto">
+                    <div className="flex items-center md:gap-x-4 gap-x-6 w-full md:w-auto
+                    ">
                         <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${process.env.NEXT_PUBLIC_DOMAIN_URL}/
                         posts/${post.hashId}/${post.slug}`}
                         target="_blank"
@@ -154,6 +168,21 @@ const PostPAge = ({post}) => {
                         className="fill-gray-400 hover:fill-gray-500 transition-all duration-300 cursor-pointer"
                         />
                         </a>
+                    </div>
+                    <div>
+                <CopyToClipboard text={`${post.title}&url=${process.env.NEXT_PUBLIC_DOMAIN_URL}/
+                       posts/${post.hashId}/${post.slug}`}
+                        onCopy={copideHandler}>
+                        <div className="bg-gray-100 border cursor-pointer px-3 py-1 rounded-2xl text-gray-600 flex
+                        items-center gap-x-2">
+                        <span>کپی&nbsp;لینک</span> 
+                        <MdContentCopy size={22}/>
+                        </div>
+                </CopyToClipboard>
+                {copeid && 
+                       <ToastContainer/>
+                }
+                        </div>
                     </div>
                 </div>
              </section>

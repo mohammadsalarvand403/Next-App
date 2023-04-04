@@ -33,7 +33,6 @@ export default function CategoryPage({blogsData,postCategoris}) {
 
 export async function getServerSideProps(context) {
   const {query} =context;
-  console.log(queryString.stringify(query));
  const {data:result}= await axios
  .get(`http://localhost:5000/api/posts?${queryString.stringify(query)}`);
  const {data:postCategorisResult}=await axios.get("http://localhost:5000/api/post-category")
