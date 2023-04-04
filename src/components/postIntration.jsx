@@ -1,7 +1,7 @@
 import { toPersianDigits } from "@/utils/toPersianDigits";
 import {HeartIcon,BookmarkIcon,ChatBubbleBottomCenterTextIcon} from "@heroicons/react/24/outline"
 import {HeartIcon as SolideHeartIcon ,BookmarkIcon as SolideBookmarkIcon} from "@heroicons/react/24/solid"
-import { FaTelegram } from 'react-icons/fa';
+
 const PostIntraction = ({post,isSmall,className}) => {
     const iconSize=`${isSmall? "h-4 w-4":"h-8 w-8"}`
     return ( 

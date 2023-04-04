@@ -10,6 +10,8 @@ import { FaTelegram} from 'react-icons/fa';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { useState } from "react";
 import {MdContentCopy} from 'react-icons/md';
+import PostList from "@/components/post/postList";
+import PostComments from "@/components/post/postComments";
 
 const PostPAge = ({post}) => {
     const [copeid,setCopeid]=useState(false)
@@ -21,10 +23,10 @@ const PostPAge = ({post}) => {
         },3000)
     }
     return (
-        <div dir="rtl" className="bg-gray-50 h-screen p-2">
-            <div className="md:max-w-screen-md  container mx-auto">
+        <div dir="rtl" className="bg-gray-50 min-h-screen p-2">
+            <div className="md:max-w-screen-lg  container mx-auto">
             <header className="flex flex-col md:flex-row gap-y-5 md:justify-between md:items-start
-            mb-12  mx-auto">
+            mb-12  mx-auto max-w-screen-md">
                 {/* {author data} */}
                 <div className="flex items-stretch">
                     <img className="w-14 h-14 md:w-20 md:h-20 rounded-full ring-2 ring-white"
@@ -71,7 +73,7 @@ const PostPAge = ({post}) => {
             <main className="prose prose-xl prose-slate prose-h1:text-xl md:prose-h1:text-3xl
             prose-h1:font-black prose-h2:text-xl md:prose-h2:text-2xl prose-h2:font-extrabold
             prose-p:text-base prose-p:leading-8 md:prose-p:text-lg md:prose-p:leading-10 
-            prose-img:rounded-xl prose-a:text-blue-600">
+            prose-img:rounded-xl prose-a:text-blue-600 max-w-screen-md mx-auto">
                 <h1>{post.title}</h1>
                 <h2>عنوان تستی اول</h2>
                 <p>
@@ -121,6 +123,7 @@ const PostPAge = ({post}) => {
              </pre>
             
             </main>
+            {/* {liked is bookmark} */}
             <section className="py-4">
                 <ul className="flex it flex-wrap gap-x-4 mb-6">
                     {["فرانت اند","جاوااسکریپت","ریکت","next.js"].map((tag,index)=>{
@@ -185,7 +188,16 @@ const PostPAge = ({post}) => {
                         </div>
                     </div>
                 </div>
+
+             </section> 
+          <div className="border-2 border-gray-600 mb-5 mt-2"></div>
+             <section className="mb-20 ">
+                <h2 className="font-bold text-2xl md:text-3xl">پست های مشابه</h2>
+                   <div className="grid grid-cols-6 gap-6">
+                   <PostList blogsData={post.related}/>
+                   </div>
              </section>
+                <PostComments post={post}/>
             </div>
         </div>
       );
