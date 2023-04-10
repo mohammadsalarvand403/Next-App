@@ -6,16 +6,16 @@ import CommentForm from "./CommentsForm";
 const SingelComment = ({comment}) => {
     const [onReply , setOnReply] = useState(false)
     const [commentValue, setCommentsValue]= useState("")
-    return <div className="border  border-gray-500 rounded-lg p-2 md:p-4">
-        <div className="flex  gap-x-4">
-            <UserIcon  className="h-10 w-10 rounded-2xl"/>
-            <div className="flex flex-col justify-between">
-                <span>{comment.writer?.name}</span>
-                <span>{toLocalDate(comment.createdAt)}</span>
+    return <div className="border  border-gray-300 rounded-xl p-4 mb-8 md:p-4">
+        <div className="flex items-center justify-start ">
+            <UserIcon  className="h-12 w-12 stroke-gray-600 "strokeWidth={1}/>
+            <div className="flex flex-col justify-between mr-4">
+                <span className="block text-sm text-gray-600 ">{comment.writer?.name}</span>
+                <span className="block text-xs text-gray-500 mt-2 dark:text-slate-500">{toLocalDate(comment.createdAt)}</span>
             </div>
            
         </div>
-        <div className="">
+        <div className="mt-4 leading-10">
                 {comment.content}
             </div>
             <button className="mt-4  text-blue-500 px-3 " onClick={()=>setOnReply(!onReply)}>{!onReply ? "پاسخ به ":"بیخیال"}</button>

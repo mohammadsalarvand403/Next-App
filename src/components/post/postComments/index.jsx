@@ -1,6 +1,8 @@
 import React from "@heroicons/react";
 import { Fragment, useState } from "react";
 import CommentForm from "./CommentsForm";
+import ReplyComment from "./ReplyComment";
+import Reply from "./ReplyComment";
 import SingelComment from "./SingelComment";
 
 const PostComments = ({post}) => {
@@ -12,6 +14,7 @@ const PostComments = ({post}) => {
             return !comment.responseTo && comment.status ===2 &&
            <Fragment key={comment._id}>
             <SingelComment comment={comment}/>
+            <ReplyComment comments={post.comments} parentCommentId={comment._id}/>
            </Fragment>
         })}
         <div className="mt-8">
