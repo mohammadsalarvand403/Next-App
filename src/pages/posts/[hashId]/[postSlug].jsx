@@ -12,6 +12,7 @@ import { useState } from "react";
 import {MdContentCopy} from 'react-icons/md';
 import PostList from "@/components/post/postList";
 import PostComments from "@/components/post/postComments";
+import toLocalDate from "@/utils/toLocalDate";
 
 const PostPAge = ({post}) => {
     const [copeid,setCopeid]=useState(false)
@@ -45,7 +46,7 @@ const PostPAge = ({post}) => {
                     </div>
                     <span className=" font-bold text-xs hidden md:block">{post.author.biography}</span>
                     <div className="font-bold text-gray-700 text-xs">
-                        <span>{new Date(post.createdAt).toLocaleString("fa-IR")}</span>
+                        <span>{toLocalDate(post.createdAt)}</span>
                         <span className="mx-1">&bull;</span>
                         <span>
                             <span>خواندن</span>
