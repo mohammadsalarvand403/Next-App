@@ -1,14 +1,13 @@
+import Layout from "@/container/layout";
 import Link from "next/link";
 
 const HomePage = () => {
     return ( 
-        <div>
-            <Link href={"/blogs"}>
-                <p className="flex justify-center items-center font-bold">
-                go to blogs page
-                </p>
-            </Link>
-        </div>
+        <Layout>
+           <div className="container mx-auto lg:max-w-screen-xl">
+            <h1 className="text-2xl font-bold">Thes is Home Page</h1>
+           </div>
+        </Layout>
      );
 }
  

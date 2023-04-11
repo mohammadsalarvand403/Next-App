@@ -13,6 +13,7 @@ import {MdContentCopy} from 'react-icons/md';
 import PostList from "@/components/post/postList";
 import PostComments from "@/components/post/postComments";
 import toLocalDate from "@/utils/toLocalDate";
+import Layout from "@/container/layout";
 
 const PostPAge = ({post}) => {
     const [copeid,setCopeid]=useState(false)
@@ -21,10 +22,11 @@ const PostPAge = ({post}) => {
         toast.success("کپی شد");
         setTimeout(()=>{
           setCopeid(false)  
-        },3000)
+        },6000)
     }
     return (
-        <div dir="rtl" className="bg-gray-50 min-h-screen p-2">
+<Layout>
+<div className="bg-gray-50 min-h-screen p-2">
             <div className="md:max-w-screen-lg  container mx-auto">
             <header className="flex flex-col md:flex-row gap-y-5 md:justify-between md:items-start
             mb-12  mx-auto max-w-screen-md">
@@ -201,6 +203,7 @@ const PostPAge = ({post}) => {
                 <PostComments post={post}/>
             </div>
         </div>
+</Layout>
       );
 }
  

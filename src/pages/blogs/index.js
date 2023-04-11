@@ -2,13 +2,15 @@ import CategoryDeskTop from "@/components/post/CaregoryDesktop"
 import CategoryMobile from "@/components/post/CategoryMobile"
 import PostList from "@/components/post/postList"
 import SortBar from "@/components/post/SortBar"
+import Layout from "@/container/layout"
 import axios from "axios"
 import { useState } from "react"
 
 export default function Home({blogsData,postCategoris}) {
   return (
     
-      <div dir="rtl" className="bg-gray-50">
+      <Layout>
+        <div dir="rtl" className="bg-gray-50">
     <div className="container mx-auto lg:max-w-screen-xl px-4 md:px-0">
     <CategoryMobile postCategoris={postCategoris}/>
     <div  className="grid gap-8 md:grid-cols-12 md:grid-rows-[70px_minmax(300px,_1fr)] min-h-screen">
@@ -27,6 +29,7 @@ export default function Home({blogsData,postCategoris}) {
   </div>
       </div>
       </div>
+      </Layout>
   )
 }
 

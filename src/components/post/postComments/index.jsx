@@ -9,7 +9,6 @@ const PostComments = ({post}) => {
     const [commentValue, setCommentsValue] = useState("")
     return ( 
     <div>
-        <h2>نظرات</h2>
         {post.comments.map((comment,index)=>{
             return !comment.responseTo && comment.status ===2 &&
            <Fragment key={comment._id}>
