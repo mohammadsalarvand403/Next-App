@@ -12,3 +12,8 @@
  *{
     box-sizing: border-box;
  }
+ button:disabled{
+   background-color: #ddd;
+   color: #444;
+   cursor: not-allowed;
+ }
