@@ -4,6 +4,9 @@ import Head from "next/head";
 import Input from "@/components/FormInput"
 import Link from "next/link";
 import * as Yup from "yup"
+import axios from "axios";
+import toast from 'react-hot-toast';
+import { useRouter } from "next/router";
 
 
 const initialValues={
@@ -18,8 +21,17 @@ const initialValues={
 });
 
     const RegisterForm=()=>{
+        const router =useRouter()
     const onSubmit=(values)=>{
     const {email,password}=values
+    axios.post('http://localhost:5000/api/user/signin',values,{withCredentials:true})
+    .then((res)=>{
+        toast.success("خوش آمدید")
+        router.push("/")
+    }).catch((err)=>{
+        // console.log(err?.response?.data?.message);
+        toast.error(err?.response?.data?.message)
+    })
         
     };
  

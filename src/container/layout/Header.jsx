@@ -21,10 +21,10 @@ const Header = () => {
                 <Link className="py-2 " href={"/profaile"} >
                         Profaile
                 </Link>
-                <Link className="py-2 " href={"/signin"} >
+                <Link className="py-2 " href={"/signup"} >
                         ثبت نام 
                 </Link>
-                <Link className="py-2 " href={"/signup"} >
+                <Link className="py-2 " href={"/signin"} >
                         ورود
                 </Link>
 
