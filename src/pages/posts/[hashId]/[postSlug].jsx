@@ -14,6 +14,7 @@ import PostList from "@/components/post/postList";
 import PostComments from "@/components/post/postComments";
 import toLocalDate from "@/utils/toLocalDate";
 import Layout from "@/container/layout";
+import http from "@/service/httpService";
 
 const PostPAge = ({post}) => {
     const [copeid,setCopeid]=useState(false)
@@ -209,9 +210,9 @@ const PostPAge = ({post}) => {
  
 export default PostPAge;
 
-export async function getServerSideProps({ctx}){
+export async function getServerSideProps(ctx){
     const {query,req}=ctx;
-    const {data:{data}}=await axios.get(`http://localhost:5000/api/posts/${query.postSlug}`,{
+    const {data:{data}}=await http.get(`/posts/${query.postSlug}`,{
         withCredentials:true,
         headers:{
           cookie:req.headers.cookie ||""

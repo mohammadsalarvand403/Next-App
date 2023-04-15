@@ -3,6 +3,7 @@ import CategoryMobile from "@/components/post/CategoryMobile"
 import PostList from "@/components/post/postList"
 import SortBar from "@/components/post/SortBar"
 import Layout from "@/container/layout"
+import http from "@/service/httpService"
 import axios from "axios"
 import { useState } from "react"
 
@@ -34,13 +35,13 @@ export default function Home({blogsData,postCategoris}) {
 }
 
 export async function getServerSideProps({req}) {
- const {data:result}= await axios.get("http://localhost:5000/api/posts?limit=6&page=1",{
+ const {data:result}= await http.get("/posts?limit=6&page=1",{
   withCredentials:true,
   headers:{
     cookie:req.headers.cookie ||""
   }
  });
- const {data:postCategorisResult}=await axios.get("http://localhost:5000/api/post-category")
+ const {data:postCategorisResult}=await http.get("/post-category")
  const {data}=result;
  const {data:postCategoris}=postCategorisResult
   return{
