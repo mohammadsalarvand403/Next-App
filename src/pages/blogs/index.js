@@ -33,8 +33,13 @@ export default function Home({blogsData,postCategoris}) {
   )
 }
 
-export async function getServerSideProps(context) {
- const {data:result}= await axios.get("http://localhost:5000/api/posts?limit=6&page=1");
+export async function getServerSideProps({req}) {
+ const {data:result}= await axios.get("http://localhost:5000/api/posts?limit=6&page=1",{
+  withCredentials:true,
+  headers:{
+    cookie:req.headers.cookie ||""
+  }
+ });
  const {data:postCategorisResult}=await axios.get("http://localhost:5000/api/post-category")
  const {data}=result;
  const {data:postCategoris}=postCategorisResult

@@ -209,9 +209,14 @@ const PostPAge = ({post}) => {
  
 export default PostPAge;
 
-export async function getServerSideProps(ctx){
-    const {query}=ctx;
-    const {data:{data}}=await axios.get(`http://localhost:5000/api/posts/${query.postSlug}`)
+export async function getServerSideProps({ctx}){
+    const {query,req}=ctx;
+    const {data:{data}}=await axios.get(`http://localhost:5000/api/posts/${query.postSlug}`,{
+        withCredentials:true,
+        headers:{
+          cookie:req.headers.cookie ||""
+        }
+    })
     return{
         props:{
             post:data
