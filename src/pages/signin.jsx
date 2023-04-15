@@ -4,9 +4,10 @@ import Head from "next/head";
 import Input from "@/components/FormInput"
 import Link from "next/link";
 import * as Yup from "yup"
-import axios from "axios";
-import toast from 'react-hot-toast';
+import { uesAuth, uesAuthActoins } from "@/context/AuthContext";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+
 
 
 const initialValues={
@@ -21,17 +22,16 @@ const initialValues={
 });
 
     const RegisterForm=()=>{
-        const router =useRouter()
+        const router=useRouter();
+        const dispatch=uesAuthActoins();
+        const {user}=uesAuth();
+        useEffect(()=>{
+            if(user)
+            router.push("/")
+        },[user])
     const onSubmit=(values)=>{
     const {email,password}=values
-    axios.post('http://localhost:5000/api/user/signin',values,{withCredentials:true})
-    .then((res)=>{
-        toast.success("خوش آمدید")
-        router.push("/")
-    }).catch((err)=>{
-        // console.log(err?.response?.data?.message);
-        toast.error(err?.response?.data?.message)
-    })
+    dispatch({type:"SIGNIN",payload:values})
         
     };
  

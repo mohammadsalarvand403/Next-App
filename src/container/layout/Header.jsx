@@ -1,6 +1,8 @@
+import { uesAuth } from "@/context/AuthContext";
 import Link from "next/link";
 
 const Header = () => {
+    const {user}=uesAuth()
     return ( 
     <div className="bg-white shadow-md py-2 mb-8">
         <div className="container mx-auto xl:max-w-screen-xl px-4 md:px-0">
@@ -18,15 +20,18 @@ const Header = () => {
                     </li>
                 </ul>
                 <div className="flex items-center gap-x-4">
-                <Link className="py-2 " href={"/profaile"} >
+                {user ?(<Link className="py-2 " href={"/profaile"} >
                         Profaile
-                </Link>
+                </Link>):(<>
                 <Link className="py-2 " href={"/signup"} >
                         ثبت نام 
                 </Link>
                 <Link className="py-2 " href={"/signin"} >
                         ورود
                 </Link>
+                </>
+                )}
+                
 
                 </div>
 
