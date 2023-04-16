@@ -6,7 +6,7 @@ const CategoryDeskTop = ({postCategoris}) => {
     const [isOpen,setIsOpen]=useState(true)
     const {query}=useRouter()
     return ( 
-        <div className="bg-white rounded-3xl overflow-hidden">
+        <div className="bg-white rounded-3xl overflow-hidden sticky top-24">
         <div className="flex items-center justify-between py-4 px-4 bg-purple-400"
         onClick={()=>setIsOpen(!isOpen)}>
         <span>دسته بندی مقالات</span>

@@ -1,3 +1,4 @@
+import PaginationComponent from "@/components/common/pagination"
 import CategoryDeskTop from "@/components/post/CaregoryDesktop"
 import CategoryMobile from "@/components/post/CategoryMobile"
 import PostList from "@/components/post/postList"
@@ -26,6 +27,7 @@ export default function CategoryPage({blogsData,postCategoris}) {
      {/* {blogs/section} */}
       <div className=" md:col-span-9  grid grid-cols-6 gap-8" >
     <PostList blogsData={blogsData.docs}/>
+    <PaginationComponent page={blogsData.page} totalPages={blogsData.totalPages}/>
     </div>
   </div>
       </div>
