@@ -12,13 +12,13 @@ const PostComments = ({post}) => {
         {post.comments.map((comment,index)=>{
             return !comment.responseTo && comment.status ===2 &&
            <Fragment key={comment._id}>
-            <SingelComment comment={comment}/>
-            <ReplyComment comments={post.comments} parentCommentId={comment._id}/>
+            <SingelComment comment={comment} postId={post._id}/>
+            <ReplyComment postId={post._id} comments={post.comments} parentCommentId={comment._id}/>
            </Fragment>
         })}
         <div className="mt-8">
             <span className="font-bold md:text-lg ">ارسال نظرات</span>
-            <CommentForm comment={commentValue} setComment={setCommentsValue}/>
+            <CommentForm  postId={post._id} responseTo={null}/>
         </div>
     </div> 
     );
