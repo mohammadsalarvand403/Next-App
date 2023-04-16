@@ -5,6 +5,7 @@ import SortBar from "@/components/post/SortBar"
 import Layout from "@/container/layout"
 import http from "@/service/httpService"
 import axios from "axios"
+import queryString from "query-string"
 import { useState } from "react"
 
 export default function Home({blogsData,postCategoris}) {
@@ -34,8 +35,8 @@ export default function Home({blogsData,postCategoris}) {
   )
 }
 
-export async function getServerSideProps({req}) {
- const {data:result}= await http.get("/posts?limit=6&page=1",{
+export async function getServerSideProps({req,query}) {
+ const {data:result}= await http.get(`/posts?${queryString.stringify(query)}`,{
   withCredentials:true,
   headers:{
     cookie:req.headers.cookie ||""
