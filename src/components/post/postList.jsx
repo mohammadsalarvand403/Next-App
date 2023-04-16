@@ -2,7 +2,7 @@ import {HeartIcon,BookmarkIcon,ClockIcon,ChatBubbleBottomCenterTextIcon
 
 } from "@heroicons/react/24/outline"
 import Link from "next/link";
-import PostIntraction from "../postIntration";
+import PostIntraction from "./postIntration";
 const PostList = ({blogsData}) => {
   
   
