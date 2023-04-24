@@ -1,7 +1,9 @@
-import { uesAuth } from "@/context/AuthContext";
+import { useSelector } from "react-redux";
+
 
 const Profail = () => {
-    const {user}=uesAuth()
+    const userInfo=useSelector((state)=>state.userSignin)
+    const {user}=userInfo
     return ( <div>
 <h1>{user?.name}</h1>
     </div> );

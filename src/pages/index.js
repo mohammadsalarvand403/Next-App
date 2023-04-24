@@ -1,9 +1,9 @@
 import Layout from "@/container/layout";
-import { uesAuth } from "@/context/AuthContext";
-import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
-   const {user}=uesAuth()
+   const userInfo=useSelector((state)=>state.userSignin)
+   const { user } =userInfo;
     return ( 
         <Layout>
            <div className="container mx-auto lg:max-w-screen-xl">

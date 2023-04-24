@@ -4,10 +4,10 @@ import Head from "next/head";
 import Input from "@/components/FormInput"
 import Link from "next/link";
 import * as Yup from "yup"
-import { uesAuth, uesAuthActoins } from "@/context/AuthContext";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-
+import { useDispatch,useSelector } from "react-redux";
+import { UserSignup } from "@/Redux/user/userAction";
 
 const initialValues={
     email:"",
@@ -33,15 +33,13 @@ const initialValues={
 
     const LoginForm=()=>{
     const router=useRouter();
-    const dispatch=uesAuthActoins();
-    const {user}=uesAuth();
-    useEffect(()=>{
-        if(user)
-        router.push("/")
-    },[user])
+    const userInfo=useSelector((state)=>state.userSignin)
+    const {user}=userInfo;
+    const dispatch=useDispatch()
+    
     const onSubmit=(values)=>{
     const {email,password,name,phoneNumber}=values
-        dispatch({type:"SIGNUP",payload:{email,password,name,phoneNumber}})
+        dispatch(UserSignup({email,password,name,phoneNumber}))
     };
  
     const formik=useFormik({
@@ -50,6 +48,10 @@ const initialValues={
         validationSchema,
         validateOnMount :true,
     })
+    useEffect(()=>{
+        if(user)
+        router.push("/")
+    },[user])
     return (
         <Layout>
             <Head>
